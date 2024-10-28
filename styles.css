@@ -3,3 +3,30 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+h1 {
+    text-align: center;
+}
+
+div {
+    border: solid 1px black;
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    width: 500px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
