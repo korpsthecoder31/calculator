@@ -30,16 +30,16 @@ let secondNumDisplay
 function operate(symbol, num1, num2) {
    
    switch(symbol) {
-        case ""+"":
+        case "+":
             return add(num1, num2)
             break;
-        case ""-"":
+        case "-":
             return subtract(num1, num2)
             break;
-        case ""*"":
+        case "*":
             return multiply(num1, num2)
             break;
-        case ""/"":
+        case "/":
             return divide(num1, num2)
             break;
    }
