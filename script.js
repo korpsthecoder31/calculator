@@ -18,3 +18,9 @@ function divide(num1, num2) {
     }
     return num1 / num2;
 }
+
+// define variables to store DISPLAY VALUES of first number, second number and relevant operator
+
+let firstNumDisplay
+let operatorDisplay
+let secondNumDisplay
