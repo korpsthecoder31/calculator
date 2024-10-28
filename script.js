@@ -24,3 +24,24 @@ function divide(num1, num2) {
 let firstNumDisplay
 let operatorDisplay
 let secondNumDisplay
+
+// function that takes INPUT VARIABLES (two numbers & oeprator) and calls 1 of the 4 math operator function defined above
+
+function operate(symbol, num1, num2) {
+   
+   switch(symbol) {
+        case ""+"":
+            return add(num1, num2)
+            break;
+        case ""-"":
+            return subtract(num1, num2)
+            break;
+        case ""*"":
+            return multiply(num1, num2)
+            break;
+        case ""/"":
+            return divide(num1, num2)
+            break;
+   }
+
+}
