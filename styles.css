@@ -15,7 +15,7 @@ div {
 }
 
 .main {
-    width: 500px;
+    width: 300px;
     margin: 10px auto;
     display: flex;
     flex-direction: column;
@@ -24,6 +24,10 @@ div {
 .display {
     display: flex;
     flex-direction: column;
+}
+
+#mainDisplay {
+    height: 1.5em;
 }
 
 .buttons {

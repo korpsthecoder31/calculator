@@ -45,3 +45,19 @@ function operate(symbol, num1, num2) {
    }
 
 }
+
+// function that takes user input, displays and stores into variables
+
+const mainDisplay = document.querySelector("#mainDisplay")
+
+
+
+const numButtons = document.querySelectorAll(".numButtons")
+
+
+
+numButtons.forEach(button =>
+    button.addEventListener("click", () => {
+        mainDisplay.textContent += button.textContent
+    })
+)
