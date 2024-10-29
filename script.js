@@ -50,11 +50,13 @@ function operate(symbol, num1, num2) {
 
 const mainDisplay = document.querySelector("#mainDisplay")
 
-
+const clearButton = document.querySelector("#clearButton")
 
 const numButtons = document.querySelectorAll(".numButtons")
 
-
+clearButton.addEventListener("click", () => {
+    mainDisplay.textContent = "";
+});
 
 numButtons.forEach(button =>
     button.addEventListener("click", () => {
