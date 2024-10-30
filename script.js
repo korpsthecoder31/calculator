@@ -46,20 +46,25 @@ function operate(symbol, num1, num2) {
 
 }
 
-// function that takes user input, displays and stores into variables
+// define calculator display as variable
 
 const mainDisplay = document.querySelector("#mainDisplay")
 
-const clearButton = document.querySelector("#clearButton")
+
+// amends textContent of mainDisplay onclick of numButtons
 
 const numButtons = document.querySelectorAll(".numButtons")
-
-clearButton.addEventListener("click", () => {
-    mainDisplay.textContent = "";
-});
 
 numButtons.forEach(button =>
     button.addEventListener("click", () => {
         mainDisplay.textContent += button.textContent
     })
 )
+
+// function that clears display
+
+const clearButton = document.querySelector("#clearButton")
+
+clearButton.addEventListener("click", () => {
+    mainDisplay.textContent = "";
+});
