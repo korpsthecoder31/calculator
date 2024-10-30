@@ -68,3 +68,10 @@ const clearButton = document.querySelector("#clearButton")
 clearButton.addEventListener("click", () => {
     mainDisplay.textContent = "";
 });
+
+
+// variables
+
+const operatorButtons = document.querySelectorAll(".operatorButtons")
+
+const equalButton = document.querySelector("#equalButton")
