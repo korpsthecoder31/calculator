@@ -19,11 +19,11 @@ function divide(num1, num2) {
     return num1 / num2;
 }
 
-// define variables to store DISPLAY VALUES of first number, second number and relevant operator
+// define variables to store values of current value, operator and modifier value
 
-let firstNumDisplay
-let operatorDisplay
-let secondNumDisplay
+let currentValue
+let operator
+let modifierValue
 
 // function that takes INPUT VARIABLES (two numbers & oeprator) and calls 1 of the 4 math operator function defined above
 
