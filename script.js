@@ -21,7 +21,7 @@ function divide(num1, num2) {
 
 // define variables to store values of current value, operator and modifier value
 
-let currentValue = "empty"
+let currentValue
 let operator
 let modifierValue
 
@@ -74,9 +74,6 @@ operatorButtons.forEach(button =>
             currentValue = parseInt(mainDisplay.textContent)
         } else modifierValue = parseInt(mainDisplay.textContent)
         mainDisplay.textContent = ""
-        console.log(currentValue)
-        console.log(operator)
-        console.log(modifierValue)
     })
 )
 
@@ -87,8 +84,6 @@ const clearButton = document.querySelector("#clearButton")
 clearButton.addEventListener("click", () => {
     mainDisplay.textContent = ""
 })
-
-
 
 
 // unused variables
