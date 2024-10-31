@@ -70,15 +70,22 @@ const operatorButtons = document.querySelectorAll(".operatorButtons")
 operatorButtons.forEach(button =>
     button.addEventListener("click", () => {
         operator = button.textContent
-        if (currentValue === null) {
+        if (!currentValue) {
             currentValue = parseInt(mainDisplay.textContent)
         } else modifierValue = parseInt(mainDisplay.textContent)
         mainDisplay.textContent = ""
-        console.log(currentValue)
-        console.log(operator)
-        console.log(modifierValue)
     })
 )
+
+// equalButton callbacks math function
+
+const equalButton = document.querySelector("#equalButton")
+
+equalButton.addEventListener("click", () => {
+    modifierValue = parseInt(mainDisplay.textContent)
+    currentValue = operate(operator, currentValue, modifierValue)
+    mainDisplay.textContent = currentValue
+})
 
 // function that clears display
 
@@ -94,4 +101,3 @@ clearButton.addEventListener("click", () => {
 
 // unused variables
 
-const equalButton = document.querySelector("#equalButton")
