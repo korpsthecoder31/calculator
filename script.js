@@ -21,9 +21,9 @@ function divide(num1, num2) {
 
 // define variables to store values of current value, operator and modifier value
 
-let currentValue
-let operator
-let modifierValue
+let currentValue = null
+let operator = null
+let modifierValue = null
 
 // function that takes INPUT VARIABLES (two numbers & oeprator) and calls 1 of the 4 math operator function defined above
 
@@ -70,10 +70,13 @@ const operatorButtons = document.querySelectorAll(".operatorButtons")
 operatorButtons.forEach(button =>
     button.addEventListener("click", () => {
         operator = button.textContent
-        if (currentValue === "empty") {
+        if (currentValue === null) {
             currentValue = parseInt(mainDisplay.textContent)
         } else modifierValue = parseInt(mainDisplay.textContent)
         mainDisplay.textContent = ""
+        console.log(currentValue)
+        console.log(operator)
+        console.log(modifierValue)
     })
 )
 
@@ -82,6 +85,9 @@ operatorButtons.forEach(button =>
 const clearButton = document.querySelector("#clearButton")
 
 clearButton.addEventListener("click", () => {
+    currentValue = null
+    operator = null
+    modifierValue = null
     mainDisplay.textContent = ""
 })
 
