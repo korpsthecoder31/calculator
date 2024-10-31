@@ -1,27 +1,27 @@
 // functions of the four basic mathematical operations
 
 function add(num1, num2) {
-    return num1 + num2;
+    return num1 + num2
 }
 
 function subtract(num1, num2) {
-    return num1 - num2;
+    return num1 - num2
 }
 
 function multiply(num1, num2) {
-    return num1 * num2;
+    return num1 * num2
 }
 
 function divide(num1, num2) {
     if (num2 === 0) {
-        return "undefined";
+        return "undefined"
     }
-    return num1 / num2;
+    return num1 / num2
 }
 
 // define variables to store values of current value, operator and modifier value
 
-let currentValue
+let currentValue = "empty"
 let operator
 let modifierValue
 
@@ -51,7 +51,7 @@ function operate(symbol, num1, num2) {
 const mainDisplay = document.querySelector("#mainDisplay")
 
 
-// amends textContent of mainDisplay onclick of numButtons
+// edits textContent of mainDisplay onclick of numButtons
 
 const numButtons = document.querySelectorAll(".numButtons")
 
@@ -61,17 +61,36 @@ numButtons.forEach(button =>
     })
 )
 
+
+// takes textContent and stores it in currentValue (if empty) or modifierValue, assigns operator
+
+
+const operatorButtons = document.querySelectorAll(".operatorButtons")
+
+operatorButtons.forEach(button =>
+    button.addEventListener("click", () => {
+        operator = button.textContent
+        if (currentValue === "empty") {
+            currentValue = parseInt(mainDisplay.textContent)
+        } else modifierValue = parseInt(mainDisplay.textContent)
+        mainDisplay.textContent = ""
+        console.log(currentValue)
+        console.log(operator)
+        console.log(modifierValue)
+    })
+)
+
 // function that clears display
 
 const clearButton = document.querySelector("#clearButton")
 
 clearButton.addEventListener("click", () => {
-    mainDisplay.textContent = "";
-});
+    mainDisplay.textContent = ""
+})
 
 
-// variables
 
-const operatorButtons = document.querySelectorAll(".operatorButtons")
+
+// unused variables
 
 const equalButton = document.querySelector("#equalButton")
