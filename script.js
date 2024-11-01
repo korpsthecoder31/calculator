@@ -24,6 +24,7 @@ function divide(num1, num2) {
 let currentValue = null
 let operator = null
 let modifierValue = null
+let isWaitingForNum = true
 
 // function that takes INPUT VARIABLES (two numbers & oeprator) and calls 1 of the 4 math operator function defined above
 
@@ -50,6 +51,7 @@ function operate(symbol, num1, num2) {
 
 const mainDisplay = document.querySelector("#mainDisplay")
 
+mainDisplay.textContent = 0
 
 // edits textContent of mainDisplay onclick of numButtons
 
@@ -57,6 +59,10 @@ const numButtons = document.querySelectorAll(".numButtons")
 
 numButtons.forEach(button =>
     button.addEventListener("click", () => {
+        if (isWaitingForNum) {
+        mainDisplay.textContent = ""
+        isWaitingForNum = false
+        }
         mainDisplay.textContent += button.textContent
     })
 )
@@ -70,10 +76,10 @@ const operatorButtons = document.querySelectorAll(".operatorButtons")
 operatorButtons.forEach(button =>
     button.addEventListener("click", () => {
         operator = button.textContent
-        if (!currentValue) {
+        if (currentValue === null) {
             currentValue = parseInt(mainDisplay.textContent)
         } else modifierValue = parseInt(mainDisplay.textContent)
-        mainDisplay.textContent = ""
+        isWaitingForNum = true
     })
 )
 
@@ -84,10 +90,11 @@ const equalButton = document.querySelector("#equalButton")
 equalButton.addEventListener("click", () => {
     modifierValue = parseInt(mainDisplay.textContent)
     currentValue = operate(operator, currentValue, modifierValue)
+    console.log(currentValue)
     mainDisplay.textContent = currentValue
 })
 
-// function that clears display
+// function that clears display and resets values
 
 const clearButton = document.querySelector("#clearButton")
 
@@ -95,7 +102,8 @@ clearButton.addEventListener("click", () => {
     currentValue = null
     operator = null
     modifierValue = null
-    mainDisplay.textContent = ""
+    isWaitingForNum = true
+    mainDisplay.textContent = 0
 })
 
 
