@@ -78,7 +78,11 @@ operatorButtons.forEach(button =>
         operator = button.textContent
         if (currentValue === null) {
             currentValue = parseInt(mainDisplay.textContent)
-        } else modifierValue = parseInt(mainDisplay.textContent)
+        } else { 
+            modifierValue = parseInt(mainDisplay.textContent)
+            currentValue = operate(operator, currentValue, modifierValue)
+            mainDisplay.textContent = currentValue
+        }
         isWaitingForNum = true
     })
 )
@@ -90,7 +94,6 @@ const equalButton = document.querySelector("#equalButton")
 equalButton.addEventListener("click", () => {
     modifierValue = parseInt(mainDisplay.textContent)
     currentValue = operate(operator, currentValue, modifierValue)
-    console.log(currentValue)
     mainDisplay.textContent = currentValue
 })
 
