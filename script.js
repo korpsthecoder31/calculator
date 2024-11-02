@@ -89,7 +89,7 @@ operatorButtons.forEach(button =>
         
         if (baseValue && modifierValue) {
             resultValue = operate(operator, baseValue, modifierValue)
-            mainDisplay.textContent = resultValue
+            mainDisplay.textContent = resultValue  // ERROR "1 + 1 -" should return 2 but currently returns 0 i.e. 2nd operator should act as equal sign and shouldn't be invoked
         }   
 
         isWaitingForNum = true
