@@ -77,8 +77,6 @@ const operatorButtons = document.querySelectorAll(".operatorButtons")
 operatorButtons.forEach(button =>
     button.addEventListener("click", () => {
     
-    if (!operator) {
-
         operator = button.textContent
 
         if (resultValue) {
@@ -87,16 +85,14 @@ operatorButtons.forEach(button =>
 
         if (!baseValue) {
             baseValue = parseInt(mainDisplay.textContent)
-        } else modifierValue = parseInt(mainDisplay.textContent)    
+        } else modifierValue = parseInt(mainDisplay.textContent)
+        
+        if (baseValue && modifierValue) {
+            resultValue = operate(operator, baseValue, modifierValue)
+            mainDisplay.textContent = resultValue
+        }   
 
         isWaitingForNum = true
-    } else {
-        modifierValue = parseInt(mainDisplay.textContent)
-        resultValue = operate(operator, baseValue, modifierValue)
-        mainDisplay.textContent = resultValue
-        operator = button.textContent
-    }
-
 
     })
 )
