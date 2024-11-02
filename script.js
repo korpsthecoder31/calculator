@@ -21,9 +21,10 @@ function divide(num1, num2) {
 
 // define variables to store values of current value, operator and modifier value
 
-let currentValue = null
+let baseValue = null
 let operator = null
 let modifierValue = null
+let resultValue = null
 let isWaitingForNum = true
 
 // function that takes INPUT VARIABLES (two numbers & oeprator) and calls 1 of the 4 math operator function defined above
@@ -75,15 +76,28 @@ const operatorButtons = document.querySelectorAll(".operatorButtons")
 
 operatorButtons.forEach(button =>
     button.addEventListener("click", () => {
+    
+    if (!operator) {
+
         operator = button.textContent
-        if (currentValue === null) {
-            currentValue = parseInt(mainDisplay.textContent)
-        } else { 
-            modifierValue = parseInt(mainDisplay.textContent)
-            currentValue = operate(operator, currentValue, modifierValue)
-            mainDisplay.textContent = currentValue
-        }
+
+        if (resultValue) {
+            baseValue = resultValue
+        } 
+
+        if (!baseValue) {
+            baseValue = parseInt(mainDisplay.textContent)
+        } else modifierValue = parseInt(mainDisplay.textContent)    
+
         isWaitingForNum = true
+    } else {
+        modifierValue = parseInt(mainDisplay.textContent)
+        resultValue = operate(operator, baseValue, modifierValue)
+        mainDisplay.textContent = resultValue
+        operator = button.textContent
+    }
+
+
     })
 )
 
@@ -93,8 +107,8 @@ const equalButton = document.querySelector("#equalButton")
 
 equalButton.addEventListener("click", () => {
     modifierValue = parseInt(mainDisplay.textContent)
-    currentValue = operate(operator, currentValue, modifierValue)
-    mainDisplay.textContent = currentValue
+    resultValue = operate(operator, baseValue, modifierValue)
+    mainDisplay.textContent = resultValue
 })
 
 // function that clears display and resets values
@@ -102,9 +116,10 @@ equalButton.addEventListener("click", () => {
 const clearButton = document.querySelector("#clearButton")
 
 clearButton.addEventListener("click", () => {
-    currentValue = null
+    baseValue = null
     operator = null
     modifierValue = null
+    resultValue = null
     isWaitingForNum = true
     mainDisplay.textContent = 0
 })
@@ -112,3 +127,8 @@ clearButton.addEventListener("click", () => {
 
 // unused variables
 
+function log() {
+    console.log(baseValue)
+    console.log(modifierValue)
+    console.log(resultValue)
+}
