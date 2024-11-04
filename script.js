@@ -84,8 +84,10 @@ operatorButtons.forEach(button =>
         
         if (!baseValue) {
             baseValue = parseInt(mainDisplay.textContent)
-        } else if (!modifierValue) {
+        } else if (!modifierValue && !resultValue) {
             modifierValue = parseInt(mainDisplay.textContent)
+            operate(operator, baseValue, modifierValue)
+            mainDisplay.textContent = resultValue
         }
 
         if (resultValue) {
@@ -97,34 +99,6 @@ operatorButtons.forEach(button =>
         operator = button.textContent
 
         isWaitingForNum = true
-
-        // modifierValue = null
-
-        // if (!baseValue || resultValue) {
-        //     baseValue = parseInt(mainDisplay.textContent)
-        // } else modifierValue = parseInt(mainDisplay.textContent)
-
-        
-
-        // if (isWaitingForOperation) {
-        //     if (resultValue) {
-        //         baseValue = resultValue
-        //     } 
-
-        //     if (baseValue && modifierValue) {
-        //         operate(operator, baseValue, modifierValue)
-        //         mainDisplay.textContent = resultValue 
-        //     } else if (!baseValue) {
-        //         baseValue = parseInt(mainDisplay.textContent)
-        //     } else modifierValue = parseInt(mainDisplay.textContent)
-
-        //     isWaitingForOperation = false
-        // }
-                   
-        // operator = button.textContent
-
-        // isWaitingForNum = true
-
     })
 )
 
@@ -167,7 +141,7 @@ clearButton.addEventListener("click", () => {
 })
 
 
-// unused variables
+//easy log function
 
 function log() {
     console.log(baseValue)
