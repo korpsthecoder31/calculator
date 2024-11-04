@@ -27,7 +27,6 @@ let modifierValue = null
 let resultValue = null
 
 let isWaitingForNum = true
-let isWaitingForOperation = false
 
 // function that takes INPUT VARIABLES (two numbers & oeprator) and calls 1 of the 4 math operator function defined above
 
@@ -122,10 +121,7 @@ equalButton.addEventListener("click", () => {
         mainDisplay.textContent = resultValue
     }
     isWaitingForNum = true
-})
-    
-    // console.log("test")
-  
+})  
 
 // function that clears display and resets values
 
