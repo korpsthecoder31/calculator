@@ -65,7 +65,6 @@ numButtons.forEach(button =>
         if (isWaitingForNum) {
         mainDisplay.textContent = ""
         isWaitingForNum = false
-        isWaitingForOperation = true
         }
 
         mainDisplay.textContent += button.textContent
