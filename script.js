@@ -27,6 +27,7 @@ let modifierValue = null
 let resultValue = null
 
 let isWaitingForNum = true
+let nextOperatorIsEqualSign = false
 
 // function that takes INPUT VARIABLES (two numbers & oeprator) and calls 1 of the 4 math operator function defined above
 
@@ -67,6 +68,10 @@ numButtons.forEach(button =>
         isWaitingForNum = false
         }
 
+        if (baseValue) {
+            nextOperatorIsEqualSign = true
+        }
+
         mainDisplay.textContent += button.textContent
     })
 )
@@ -79,19 +84,23 @@ const operatorButtons = document.querySelectorAll(".operatorButtons")
 
 operatorButtons.forEach(button =>
     button.addEventListener("click", () => {
+
         
         if (!baseValue) {
-            baseValue = parseInt(mainDisplay.textContent)
-        } else if (!modifierValue && !resultValue) {
-            modifierValue = parseInt(mainDisplay.textContent)
+            baseValue = Number(mainDisplay.textContent)
+        }
+
+        if (nextOperatorIsEqualSign) {
+            modifierValue = Number(mainDisplay.textContent)
             operate(operator, baseValue, modifierValue)
             mainDisplay.textContent = resultValue
+
+            nextOperatorIsEqualSign = false
         }
 
         if (resultValue) {
             baseValue = resultValue
             modifierValue = null
-            resultValue = null
         }
         
         operator = button.textContent
@@ -120,6 +129,7 @@ equalButton.addEventListener("click", () => {
         mainDisplay.textContent = resultValue
     }
     isWaitingForNum = true
+    nextOperatorIsEqualSign = false
 })  
 
 // function that clears display and resets values
@@ -131,7 +141,11 @@ clearButton.addEventListener("click", () => {
     operator = null
     modifierValue = null
     resultValue = null
+    
     isWaitingForNum = true
+    canModifyMod = false
+    nextOperatorIsEqualSign = false
+    
     mainDisplay.textContent = 0
 })
 
@@ -143,4 +157,6 @@ function log() {
     console.log(operator)
     console.log(modifierValue)
     console.log(resultValue)
+    console.log(canModifyMod)
+    console.log(nextOperatorIsEqualSign)
 }
