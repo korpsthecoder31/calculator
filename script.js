@@ -31,20 +31,20 @@ let nextOperatorIsEqualSign = false
 
 // function that takes INPUT VARIABLES (two numbers & oeprator) and calls 1 of the 4 math operator function defined above
 
-function operate(symbol, num1, num2) {
+function operate() {
    
-   switch(symbol) {
+   switch(operator) {
         case "+":
-            return add(num1, num2)
+            return add(baseValue, modifierValue)
             break;
         case "-":
-            return subtract(num1, num2)
+            return subtract(baseValue, modifierValue)
             break;
         case "*":
-            return multiply(num1, num2)
+            return multiply(baseValue, modifierValue)
             break;
         case "/":
-            return divide(num1, num2)
+            return divide(baseValue, modifierValue)
             break;
    }
 
@@ -92,7 +92,7 @@ operatorButtons.forEach(button =>
 
         if (nextOperatorIsEqualSign) {
             modifierValue = Number(mainDisplay.textContent)
-            operate(operator, baseValue, modifierValue)
+            operate()
             mainDisplay.textContent = resultValue
 
             nextOperatorIsEqualSign = false
@@ -121,11 +121,11 @@ equalButton.addEventListener("click", () => {
     }         
     else if (!modifierValue && operator) { 
         modifierValue = Number(mainDisplay.textContent)
-        operate(operator, baseValue, modifierValue)
+        operate()
         mainDisplay.textContent = resultValue
     } else {
         baseValue = resultValue
-        operate(operator, baseValue, modifierValue)
+        operate()
         mainDisplay.textContent = resultValue
     }
     isWaitingForNum = true
@@ -157,6 +157,5 @@ function log() {
     console.log(operator)
     console.log(modifierValue)
     console.log(resultValue)
-    console.log(canModifyMod)
     console.log(nextOperatorIsEqualSign)
 }
