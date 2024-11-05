@@ -115,12 +115,12 @@ const equalButton = document.querySelector("#equalButton")
 
 equalButton.addEventListener("click", () => {
     if (!baseValue) {
-        baseValue = parseInt(mainDisplay.textContent)     
+        baseValue = Number(mainDisplay.textContent)     
     } else if (!operator) {
         mainDisplay.textContent = baseValue
     }         
     else if (!modifierValue && operator) { 
-        modifierValue = parseInt(mainDisplay.textContent)
+        modifierValue = Number(mainDisplay.textContent)
         operate(operator, baseValue, modifierValue)
         mainDisplay.textContent = resultValue
     } else {
