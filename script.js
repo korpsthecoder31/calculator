@@ -13,9 +13,6 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-    if (num2 === 0) {
-        resultValue = "undefined"
-    }
     resultValue = num1 / num2
 }
 
@@ -27,7 +24,9 @@ let modifierValue = null
 let resultValue = null
 
 let isWaitingForNum = true
+let isWaitingForDecimals = false
 let nextOperatorIsEqualSign = false
+
 
 // function that takes INPUT VARIABLES (two numbers & oeprator) and calls 1 of the 4 math operator function defined above
 
@@ -62,10 +61,17 @@ const numButtons = document.querySelectorAll(".numButtons")
 
 numButtons.forEach(button =>
     button.addEventListener("click", () => {
-        
+
         if (isWaitingForNum) {
-        mainDisplay.textContent = ""
-        isWaitingForNum = false
+            mainDisplay.textContent = ""
+            isWaitingForNum = false
+        }
+
+        if (isWaitingForDecimals) {
+            if (!mainDisplay.textContent) {
+                mainDisplay.textContent = "0."
+            } else mainDisplay.textContent += "."
+            isWaitingForDecimals = false
         }
 
         if (baseValue) {
@@ -84,7 +90,6 @@ const operatorButtons = document.querySelectorAll(".operatorButtons")
 
 operatorButtons.forEach(button =>
     button.addEventListener("click", () => {
-
         
         if (!baseValue) {
             baseValue = Number(mainDisplay.textContent)
@@ -106,6 +111,7 @@ operatorButtons.forEach(button =>
         operator = button.textContent
 
         isWaitingForNum = true
+        isWaitingForDecimals = false
     })
 )
 
@@ -132,6 +138,22 @@ equalButton.addEventListener("click", () => {
     nextOperatorIsEqualSign = false
 })  
 
+// function that adds decimal
+
+const decimalButton = document.querySelector("#decimalButton")
+
+decimalButton.addEventListener("click", () => {
+    
+    if (isWaitingForNum) {
+        mainDisplay.textContent = "0."
+        isWaitingForNum = false
+    }
+
+    if (!mainDisplay.textContent.includes(".")) {
+        isWaitingForDecimals = true
+    }
+})
+
 // function that clears display and resets values
 
 const clearButton = document.querySelector("#clearButton")
@@ -143,19 +165,14 @@ clearButton.addEventListener("click", () => {
     resultValue = null
     
     isWaitingForNum = true
-    canModifyMod = false
+    isWaitingForDecimals = false
     nextOperatorIsEqualSign = false
     
     mainDisplay.textContent = 0
 })
 
-
 //easy log function
 
 function log() {
-    console.log(baseValue)
-    console.log(operator)
-    console.log(modifierValue)
-    console.log(resultValue)
-    console.log(nextOperatorIsEqualSign)
+    console.log(isWaitingForDecimals)
 }
