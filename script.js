@@ -145,12 +145,26 @@ const decimalButton = document.querySelector("#decimalButton")
 decimalButton.addEventListener("click", () => {
     
     if (isWaitingForNum) {
-        mainDisplay.textContent = "0."
+        mainDisplay.textContent = "0"
         isWaitingForNum = false
     }
 
     if (!mainDisplay.textContent.includes(".")) {
         isWaitingForDecimals = true
+    }
+})
+
+// function that acts as backspace
+
+const deleteButton = document.querySelector("#deleteButton")
+
+deleteButton.addEventListener("click", () => {
+    if (mainDisplay.textContent !== "0") {
+        mainDisplay.textContent = mainDisplay.textContent.slice(0, -1)
+    }
+
+    if (mainDisplay.textContent === "") {
+        mainDisplay,textContent = "0"
     }
 })
 
@@ -174,5 +188,8 @@ clearButton.addEventListener("click", () => {
 //easy log function
 
 function log() {
-    console.log(isWaitingForDecimals)
+    console.log(baseValue)
+    console.log(operator)
+    console.log(modifierValue)
+    console.log(resultValue) 
 }
