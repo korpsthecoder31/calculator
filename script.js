@@ -34,18 +34,21 @@ function operate() {
    
    switch(operator) {
         case "+":
-            return add(baseValue, modifierValue)
+            add(baseValue, modifierValue)
             break;
         case "-":
-            return subtract(baseValue, modifierValue)
+            subtract(baseValue, modifierValue)
             break;
         case "*":
-            return multiply(baseValue, modifierValue)
+            multiply(baseValue, modifierValue)
             break;
         case "/":
-            return divide(baseValue, modifierValue)
+            divide(baseValue, modifierValue)
             break;
    }
+
+   mainDisplay.textContent = resultValue
+   baseValue = null
 
 }
 
@@ -98,7 +101,6 @@ operatorButtons.forEach(button =>
         if (nextOperatorIsEqualSign) {
             modifierValue = Number(mainDisplay.textContent)
             operate()
-            mainDisplay.textContent = resultValue
 
             nextOperatorIsEqualSign = false
         }
@@ -120,19 +122,17 @@ operatorButtons.forEach(button =>
 const equalButton = document.querySelector("#equalButton")
 
 equalButton.addEventListener("click", () => {
-    if (!baseValue) {
-        baseValue = Number(mainDisplay.textContent)     
-    } else if (!operator) {
-        mainDisplay.textContent = baseValue
+    if (!operator) {
+        baseValue = Number(mainDisplay.textContent)
     }         
     else if (!modifierValue && operator) { 
         modifierValue = Number(mainDisplay.textContent)
         operate()
-        mainDisplay.textContent = resultValue
+        
     } else {
         baseValue = resultValue
         operate()
-        mainDisplay.textContent = resultValue
+        
     }
     isWaitingForNum = true
     nextOperatorIsEqualSign = false
@@ -161,10 +161,6 @@ const deleteButton = document.querySelector("#deleteButton")
 deleteButton.addEventListener("click", () => {
     if (mainDisplay.textContent !== "0") {
         mainDisplay.textContent = mainDisplay.textContent.slice(0, -1)
-    }
-
-    if (mainDisplay.textContent === "") {
-        mainDisplay,textContent = "0"
     }
 })
 
