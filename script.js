@@ -13,7 +13,9 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-    resultValue = num1 / num2
+    if (num2 === 0) {
+        resultValue = "Beyond here lies the void. Do not enter..."
+    } else resultValue = num1 / num2
 }
 
 // define variables to store values of current value, operator and modifier value
@@ -122,6 +124,10 @@ operatorButtons.forEach(button =>
 const equalButton = document.querySelector("#equalButton")
 
 equalButton.addEventListener("click", () => {
+    if (isNaN(resultValue)) {
+        return mainDisplay.textContent = "Very well..."
+    }
+    
     if (!operator) {
         baseValue = Number(mainDisplay.textContent)
     }         
