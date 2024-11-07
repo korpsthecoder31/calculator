@@ -104,7 +104,7 @@ operatorButtons.forEach(button =>
         }
 
         if (resultValue) {
-            baseValue = resultValue
+            baseValue = Number(mainDisplay.textContent)
             modifierValue = null
         }
         
