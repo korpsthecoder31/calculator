@@ -28,6 +28,7 @@ let resultValue = null
 let isWaitingForNum = true
 let isWaitingForDecimals = false
 let nextOperatorIsEqualSign = false
+let canBackspace = false
 
 
 // function that takes INPUT VARIABLES (two numbers & oeprator) and calls 1 of the 4 math operator function defined above
@@ -50,7 +51,7 @@ function operate() {
    }
 
    mainDisplay.textContent = resultValue
-   baseValue = null
+   canBackspace = false
 
 }
 
@@ -66,6 +67,8 @@ const numButtons = document.querySelectorAll(".numButtons")
 
 numButtons.forEach(button =>
     button.addEventListener("click", () => {
+
+        canBackspace = true
 
         if (isWaitingForNum) {
             mainDisplay.textContent = ""
@@ -138,6 +141,7 @@ equalButton.addEventListener("click", () => {
     } else {
         baseValue = resultValue
         operate()
+        baseValue = null
         
     }
     isWaitingForNum = true
@@ -165,7 +169,7 @@ decimalButton.addEventListener("click", () => {
 const deleteButton = document.querySelector("#deleteButton")
 
 deleteButton.addEventListener("click", () => {
-    if (mainDisplay.textContent !== "0") {
+    if (mainDisplay.textContent !== "0" && canBackspace) {
         mainDisplay.textContent = mainDisplay.textContent.slice(0, -1)
     }
 })
@@ -190,8 +194,5 @@ clearButton.addEventListener("click", () => {
 //easy log function
 
 function log() {
-    console.log(baseValue)
-    console.log(operator)
-    console.log(modifierValue)
-    console.log(resultValue) 
+    console.log(isWaitingForNum)
 }
