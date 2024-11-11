@@ -187,6 +187,7 @@ clearButton.addEventListener("click", () => {
     isWaitingForNum = true
     isWaitingForDecimals = false
     nextOperatorIsEqualSign = false
+    canBackspace = false
     
     mainDisplay.textContent = 0
 })
