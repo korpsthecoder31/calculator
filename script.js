@@ -191,9 +191,3 @@ clearButton.addEventListener("click", () => {
     
     mainDisplay.textContent = 0
 })
-
-//easy log function
-
-function log() {
-    console.log(isWaitingForNum)
-}
