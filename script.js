@@ -169,7 +169,7 @@ decimalButton.addEventListener("click", () => {
 const deleteButton = document.querySelector("#deleteButton")
 
 deleteButton.addEventListener("click", () => {
-    if (mainDisplay.textContent !== "0" && canBackspace) {
+    if (canBackspace) {
         mainDisplay.textContent = mainDisplay.textContent.slice(0, -1)
     }
 })
