@@ -68,27 +68,44 @@ const numButtons = document.querySelectorAll(".numButtons")
 numButtons.forEach(button =>
     button.addEventListener("click", () => {
 
-        canBackspace = true
+        handleNums(button.textContent)
 
-        if (isWaitingForNum) {
-            mainDisplay.textContent = ""
-            isWaitingForNum = false
-        }
-
-        if (isWaitingForDecimals) {
-            if (!mainDisplay.textContent) {
-                mainDisplay.textContent = "0."
-            } else mainDisplay.textContent += "."
-            isWaitingForDecimals = false
-        }
-
-        if (baseValue) {
-            nextOperatorIsEqualSign = true
-        }
-
-        mainDisplay.textContent += button.textContent
     })
 )
+
+document.addEventListener("keydown", (event) => {
+
+    const regexNum = /^[0-9]/
+    const input = event.key
+
+    if (regexNum.test(input)) {
+        handleNums(input)
+    }
+})
+
+function handleNums(number) {
+
+    canBackspace = true
+
+    if (isWaitingForNum) {
+        mainDisplay.textContent = ""
+        isWaitingForNum = false
+    }
+
+    if (isWaitingForDecimals) {
+        if (!mainDisplay.textContent) {
+            mainDisplay.textContent = "0."
+        } else mainDisplay.textContent += "."
+        
+        isWaitingForDecimals = false
+    }
+
+    if (baseValue) {
+        nextOperatorIsEqualSign = true
+    }
+
+    mainDisplay.textContent += number
+}
 
 
 // takes textContent and stores it in currentValue (if empty) or modifierValue, assigns operator
