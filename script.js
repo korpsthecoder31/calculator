@@ -83,7 +83,7 @@ document.addEventListener("keydown", (event) => {
     }
 })
 
-function handleNums(number) {
+function handleNums(numInput) {
 
     canBackspace = true
 
@@ -104,7 +104,7 @@ function handleNums(number) {
         nextOperatorIsEqualSign = true
     }
 
-    mainDisplay.textContent += number
+    mainDisplay.textContent += numInput
 }
 
 
