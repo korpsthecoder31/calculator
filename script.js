@@ -160,6 +160,16 @@ function handleOperator(opInput) {
 const equalButton = document.querySelector("#equalButton")
 
 equalButton.addEventListener("click", () => {
+    equalSign()
+})
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "=" || event.key === "Enter") {
+        equalSign()
+    }
+})
+
+function equalSign() {
     if (isNaN(resultValue)) {
         return mainDisplay.textContent = "Very well..."
     }
@@ -179,7 +189,7 @@ equalButton.addEventListener("click", () => {
     }
     isWaitingForNum = true
     nextOperatorIsEqualSign = false
-})  
+}
 
 // function that adds decimal
 
