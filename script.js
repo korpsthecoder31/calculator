@@ -221,10 +221,20 @@ function addDecimal() {
 const deleteButton = document.querySelector("#deleteButton")
 
 deleteButton.addEventListener("click", () => {
+    backspace()
+})
+
+document.addEventListener("keydown", (event) =>{
+    if (event.key === "Backspace") {
+        backspace()
+    }
+})
+
+function backspace() {
     if (canBackspace) {
         mainDisplay.textContent = mainDisplay.textContent.slice(0, -1)
     }
-})
+}
 
 // function that clears display and resets values
 
