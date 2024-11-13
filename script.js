@@ -61,7 +61,7 @@ const mainDisplay = document.querySelector("#mainDisplay")
 
 mainDisplay.textContent = 0
 
-// edits textContent of mainDisplay onclick of numButtons
+// functions that handles number inputs
 
 const numButtons = document.querySelectorAll(".numButtons")
 
