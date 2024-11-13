@@ -123,10 +123,10 @@ operatorButtons.forEach(button =>
 
 document.addEventListener("keydown", (event) => {
     
-    const regex = /^[+\-*/]/
+    const regexOperator = /^[+\-*/]/
     const input = event.key
 
-    if (regex.test(input)) {
+    if (regexOperator.test(input)) {
         handleOperator(input)
     }
 
