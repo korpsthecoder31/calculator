@@ -196,7 +196,16 @@ function equalSign() {
 const decimalButton = document.querySelector("#decimalButton")
 
 decimalButton.addEventListener("click", () => {
-    
+    addDecimal() 
+})
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === ".") {
+        addDecimal()
+    }
+})
+
+function addDecimal() {
     if (isWaitingForNum) {
         mainDisplay.textContent = "0"
         isWaitingForNum = false
@@ -205,7 +214,7 @@ decimalButton.addEventListener("click", () => {
     if (!mainDisplay.textContent.includes(".")) {
         isWaitingForDecimals = true
     }
-})
+}
 
 // function that acts as backspace
 
