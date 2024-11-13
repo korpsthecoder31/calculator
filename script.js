@@ -116,28 +116,44 @@ const operatorButtons = document.querySelectorAll(".operatorButtons")
 operatorButtons.forEach(button =>
     button.addEventListener("click", () => {
         
-        if (!baseValue) {
-            baseValue = Number(mainDisplay.textContent)
-        }
-
-        if (nextOperatorIsEqualSign) {
-            modifierValue = Number(mainDisplay.textContent)
-            operate()
-
-            nextOperatorIsEqualSign = false
-        }
-
-        if (resultValue) {
-            baseValue = Number(mainDisplay.textContent)
-            modifierValue = null
-        }
+        handleOperator(button.textContent)
         
-        operator = button.textContent
-
-        isWaitingForNum = true
-        isWaitingForDecimals = false
     })
 )
+
+document.addEventListener("keydown", (event) => {
+    
+    const regex = /^[+\-*/]/
+    const input = event.key
+
+    if (regex.test(input)) {
+        handleOperator(input)
+    }
+
+})
+
+function handleOperator(opInput) {
+    if (!baseValue) {
+        baseValue = Number(mainDisplay.textContent)
+    }
+
+    if (nextOperatorIsEqualSign) {
+        modifierValue = Number(mainDisplay.textContent)
+        operate()
+
+        nextOperatorIsEqualSign = false
+    }
+
+    if (resultValue) {
+        baseValue = Number(mainDisplay.textContent)
+        modifierValue = null
+    }
+    
+    operator = opInput
+
+    isWaitingForNum = true
+    isWaitingForDecimals = false
+}
 
 // equalButton callbacks math function
 
