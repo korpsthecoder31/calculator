@@ -14,7 +14,7 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
     if (num2 === 0) {
-        resultValue = "Beyond here lies the void. Do not enter..."
+        resultValue = "Beyond is the void... Clear now."
     } else resultValue = num1 / num2
 }
 
@@ -48,6 +48,10 @@ function operate() {
         case "/":
             divide(baseValue, modifierValue)
             break;
+   }
+
+   if (resultValue > 999999999) {
+    resultValue = 999999999
    }
 
    mainDisplay.textContent = resultValue
@@ -253,3 +257,6 @@ clearButton.addEventListener("click", () => {
     
     mainDisplay.textContent = 0
 })
+
+// set max values of result and decimals
+

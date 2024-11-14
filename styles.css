@@ -36,9 +36,9 @@ div {
     border: solid 1px;
     padding: 4px;
     margin-bottom: 8px;
+    height: 30px;
     
     font-family: Arial, Helvetica, sans-serif;
-    
 }
 
 .buttons {
