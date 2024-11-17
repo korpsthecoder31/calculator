@@ -14,7 +14,7 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
     if (num2 === 0) {
-        resultValue = "Beyond is the void... Clear now."
+        resultValue = "- Error. Undefined -"
     } else resultValue = num1 / num2
 }
 
@@ -175,7 +175,7 @@ document.addEventListener("keydown", (event) => {
 
 function equalSign() {
     if (isNaN(resultValue)) {
-        return mainDisplay.textContent = "Very well..."
+        return mainDisplay.textContent = "- Error. Undefined -"
     }
     
     if (!operator) {
