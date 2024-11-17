@@ -1,4 +1,4 @@
-// functions of the four basic mathematical operations
+// functions of the four basic mathematical operations. add 1 multiply result to fix to limit decimal to 8 places.
 
 function add(num1, num2) {
     resultValue = num1 + num2
@@ -26,12 +26,14 @@ function divide(num1, num2) {
             return resultValue 
 }
 
-// define variables to store values of current value, operator and modifier value
+// variables to store values and modifiers
 
 let baseValue = null
 let operator = null
 let modifierValue = null
 let resultValue = null
+
+// conditional variables that determines how values respond
 
 let isWaitingForNum = true
 let isWaitingForDecimals = false
@@ -39,7 +41,7 @@ let nextOperatorIsEqualSign = false
 let canBackspace = false
 
 
-// function that takes INPUT VARIABLES (two numbers & oeprator) and calls 1 of the 4 math operator function defined above
+// function that takes input varialbes (baseValue, modifierValue and operator) and calls 1 of the 4 math operator function defined above
 
 function operate() {
    
@@ -57,10 +59,6 @@ function operate() {
             divide(baseValue, modifierValue)
             break;
    }
-
-//    if (resultValue > 999999999) {
-//     resultValue = 999999999
-//    }
 
    mainDisplay.textContent = resultValue
    canBackspace = false
@@ -120,7 +118,8 @@ function handleNums(numInput) {
 }
 
 
-// takes textContent and stores it in currentValue (if empty) or modifierValue, assigns operator
+// takes textContent and stores it in currentValue (if empty) or modifierValue, 
+// then assigns operator. operates if necessary
 
 
 const operatorButtons = document.querySelectorAll(".operatorButtons")
@@ -266,5 +265,4 @@ clearButton.addEventListener("click", () => {
     mainDisplay.textContent = 0
 })
 
-// set max values of result and decimals
 
