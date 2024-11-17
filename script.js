@@ -2,20 +2,28 @@
 
 function add(num1, num2) {
     resultValue = num1 + num2
+    resultValue = 1 * resultValue.toFixed(8)
+    return resultValue 
 }
 
 function subtract(num1, num2) {
     resultValue = num1 - num2
+    resultValue = 1 * resultValue.toFixed(8)
+    return resultValue 
 }
 
 function multiply(num1, num2) {
     resultValue = num1 * num2
+    resultValue = 1 * resultValue.toFixed(8)
+    return resultValue 
 }
 
 function divide(num1, num2) {
     if (num2 === 0) {
         resultValue = "- Error. Undefined -"
-    } else resultValue = num1 / num2
+    } else  resultValue = num1 / num2
+            resultValue = 1 * resultValue.toFixed(8)
+            return resultValue 
 }
 
 // define variables to store values of current value, operator and modifier value
@@ -50,9 +58,9 @@ function operate() {
             break;
    }
 
-   if (resultValue > 999999999) {
-    resultValue = 999999999
-   }
+//    if (resultValue > 999999999) {
+//     resultValue = 999999999
+//    }
 
    mainDisplay.textContent = resultValue
    canBackspace = false
